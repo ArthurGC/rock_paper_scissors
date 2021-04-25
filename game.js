@@ -1,7 +1,13 @@
-const getString = string =>{
-    let result = string[0].toUpperCase() + string.slice(1).toLowerCase();
-    return result
-}
+const buttons = document.querySelectorAll('button');
+const playerIcon = document.querySelector('.player');
+const computerIcon = document.querySelector('.computer');
+const playerPoint = document.querySelector('.cpoint');
+const computerPoint = document.querySelector('.ppoint');
+const finalResult = document.querySelector('.result');
+let status = false;
+
+
+
 const random = num => {
     return Math.floor(Math.random() * (num + 1));
 }
@@ -9,37 +15,35 @@ const random = num => {
 const computerPlay = () => {
     let num = random(2);
     if (num == 0) {
-        return 'Rock';
+        return 'rock';
     } else if (num == 1) {
-        return 'Paper';
+        return 'paper';
     } else if (num == 2) {
-        return 'Scissors';
+        return 'scissors';
     }
 }
 //Declare the selections of both
-// let playerSelection = 'Paper';
-// let computerSelection = computerPlay();
 //It take my selection and computer's selection
 const playRound = (playerSelection, computerSelection) => {
     //Case Rock Scissors
-    if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
+    if (playerSelection == 'rock' && computerSelection == 'scissors') {
         return 'You win, Rock beats Scissors';
     }
-    if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
+    if (playerSelection == 'scissors' && computerSelection == 'rock') {
         return 'You lose, Rock beats Scissors';
     }
     //Case Scissor Paper
-    if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+    if (playerSelection == 'scissors' && computerSelection == 'paper') {
         return 'You win, Scissors beats Paper';
     }
-    if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
+    if (playerSelection == 'paper' && computerSelection == 'scissors') {
         return 'You lose, Scissors beats Paper';
     }
     //Case Rock Paper
-    if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+    if (playerSelection == 'paper' && computerSelection == 'rock') {
         return 'You win, Paper beats Rock';
     }
-    if (playerSelection == 'Rock' && computerSelection == 'Paper') {
+    if (playerSelection == 'rock' && computerSelection == 'paper') {
         return 'You lose, Paper beats Rock';
     }
     //Case when both are equal
@@ -47,34 +51,54 @@ const playRound = (playerSelection, computerSelection) => {
         return 'it\'s a tie';
     }
 }
+let humanPoint = 0;
+let compuPoint = 0;
 
-//console.log(playRound(playerSelection, computerSelection));
+const game = (playerSelection, computerSelection) => {
+    if (status === true) {
+        status = false;
+        humanPoint = 0;
+        compuPoint = 0;
+        finalResult.textContent = '';
+    }
 
-const game = () => {
-    let humanPoint = 0;
-    let computerPoint = 0;
-    let result = '';
-    while (humanPoint <=5 || computerPoint <=5){
-        let playerSelection = getString(prompt('Rock, Paper or Scissors'));
-        let computerSelection = computerPlay();
-        console.log(playerSelection);
-        console.log(computerSelection);
+    playerIcon.innerHTML = '';
+    computerIcon.innerHTML = '';
+    const playerImage = document.createElement('img');
+    const computerImage = document.createElement('img');
+    playerImage.classList.add('img');
+    playerImage.setAttribute("src", `/img/${playerSelection}.png`);
+    computerImage.classList.add('img');
+    computerImage.setAttribute("src", `/img/${computerSelection}.png`);
+    playerIcon.appendChild(playerImage);
+    computerIcon.appendChild(computerImage);
 
-        result = playRound(playerSelection, computerSelection)
-        if (result.indexOf('win') != -1) {
-            humanPoint++;
-        } else if (result.indexOf('lose') != -1) {
-            computerPoint++;
-        }
-        console.log(humanPoint);
-        console.log(computerPoint);
-        if (humanPoint == 5){
-            console.log('You win')
-            break;
-        }else if (computerPoint == 5) {
-            console.log('You lose')
-            break;
-        }
+    let result = playRound(playerSelection, computerSelection);
+
+    if (result.indexOf('win') != -1) {
+        humanPoint++;
+    } else if (result.indexOf('lose') != -1) {
+        compuPoint++;
+    }
+
+    playerPoint.textContent = humanPoint;
+    computerPoint.textContent = compuPoint;
+
+    if (humanPoint == 5) {
+        finalResult.textContent = 'You win the game, congratulations';
+        status = true;
+
+    } else if (compuPoint == 5) {
+        finalResult.textContent = "You lose the game, that's a shame";
+        status = true;
     }
 }
-game();
+
+
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let computerChoice = computerPlay();
+        game(button.id, computerChoice);
+    });
+});
