@@ -51,15 +51,15 @@ button:hover {
 }
 
 #rock{
-    background: url('./img/rock.png');
+    background: url(/img/rock.png);
     background-size: cover;
 }
 #paper{
-    background: url('./img/paper.png');
+    background: url(/img/paper.png);
     background-size: cover;
 }
 #scissors{
-    background: url('./img/scissors.png');
+    background: url(/img/scissors.png);
     background-size: cover;
 }
 .main{
