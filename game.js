@@ -67,9 +67,9 @@ const game = (playerSelection, computerSelection) => {
     const playerImage = document.createElement('img');
     const computerImage = document.createElement('img');
     playerImage.classList.add('img');
-    playerImage.setAttribute("src", `/img/${playerSelection}.png`);
+    playerImage.setAttribute("src", `./img/${playerSelection}.png`);
     computerImage.classList.add('img');
-    computerImage.setAttribute("src", `/img/${computerSelection}.png`);
+    computerImage.setAttribute("src", `./img/${computerSelection}.png`);
     playerIcon.appendChild(playerImage);
     computerIcon.appendChild(computerImage);
 
