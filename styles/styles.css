@@ -51,15 +51,15 @@ button:hover {
 }
 
 #rock{
-    background-image: url("https://rock_paper_scissors/img/rock.png");
+    background-image: url('https://raw.githubusercontent.com/ArthurGC/rock_paper_scissors/main/img/rock.png');
     background-size: cover;
 }
 #paper{
-    background-image: url("https://rock_paper_scissors/img/paper.png");
+    background-image: url('https://raw.githubusercontent.com/ArthurGC/rock_paper_scissors/main/img/paper.png');
     background-size: cover;
 }
 #scissors{
-    background-image: url("https://rock_paper_scissors/img/scissors.png");
+    background-image: url('https://raw.githubusercontent.com/ArthurGC/rock_paper_scissors/main/img/paper.png');
     background-size: cover;
 }
 .main{
