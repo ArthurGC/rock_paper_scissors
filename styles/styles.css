@@ -68,7 +68,7 @@ button:hover {
     background-size: cover;
 }
 #scissors{
-    background-image: url('https://raw.githubusercontent.com/ArthurGC/rock_paper_scissors/main/img/paper.png');
+    background-image: url('https://raw.githubusercontent.com/ArthurGC/rock_paper_scissors/main/img/scissors.png');
     background-size: cover;
 }
 .main{
