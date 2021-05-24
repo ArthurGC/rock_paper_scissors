@@ -1,8 +1,8 @@
 const buttons = document.querySelectorAll('button');
 const playerIcon = document.querySelector('.player');
 const computerIcon = document.querySelector('.computer');
-const playerPoint = document.querySelector('.cpoint');
-const computerPoint = document.querySelector('.ppoint');
+const playerPoint = document.querySelector('.ppoint');
+const computerPoint = document.querySelector('.cpoint');
 const finalResult = document.querySelector('.result');
 let status = false;
 
@@ -75,9 +75,9 @@ const game = (playerSelection, computerSelection) => {
 
     let result = playRound(playerSelection, computerSelection);
 
-    if (result.indexOf('lose') != -1) {
+    if (result.includes('win') == true) {
         humanPoint++;
-    } else if (result.indexOf('win') != -1) {
+    } else if (result.includes('lose') == true) {
         compuPoint++;
     }
 
