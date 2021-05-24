@@ -75,9 +75,9 @@ const game = (playerSelection, computerSelection) => {
 
     let result = playRound(playerSelection, computerSelection);
 
-    if (result.indexOf('win') != -1) {
+    if (result.indexOf('lose') != -1) {
         humanPoint++;
-    } else if (result.indexOf('lose') != -1) {
+    } else if (result.indexOf('win') != -1) {
         compuPoint++;
     }
 
